@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Raio de Sol | Saúde Iluminada</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #555; 
+            background-color: #f0f8ff; 
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        header {
+            background-color: #ffffff; 
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.15); 
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px; 
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e67e22; 
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo::before {
+            content: '☀';
+            margin-right: 10px;
+            color: #f1c40f;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: #666;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e67e22;
+        }
+
+        .btn-agendar {
+            /* Gradiente ensolarado */
+            background: linear-gradient(to right, #f1c40f, #e67e22);
+            color: white !important;
+            padding: 12px 25px;
+            border-radius: 50px; 
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+            transition: transform 0.3s box-shadow 0.3s;
+        }
+
+        .btn-agendar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(230, 126, 34, 0.5);
+        }
+
+        .hero {
+            background-image: linear-gradient(to bottom, rgba(255, 255, 240, 0.8), rgba(255, 255, 255, 1)), url('https://source.unsplash.com/1600x900/?sky,clouds,sunshine,happy');
+            background-size: cover;
+            background-position: center center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #444; 
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #d35400; 
+            font-weight: 800;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 35px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #666;
+        }
+
+        .btn-cta {
+            background-color: #e67e22; 
+            color: white;
+            padding: 18px 35px;
+            font-size: 1.1rem;
+            border-radius: 50px; 
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
+            transition: all 0.3s;
+        }
+
+        .btn-cta:hover {
+            background-color: #d35400;
+            transform: scale(1.05);
+        }
+
+        .servicos {
+            padding: 100px 20px;
+            background-color: #fff; 
+            text-align: center;
+            position: relative;
+        }
+        
+        .servicos::before {
+             content: "";
+             position: absolute;
+             top: -50px;
+             left: 0;
+             width: 100%;
+             height: 50px;
+             background: white;
+             border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+             z-index: 1;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #e67e22;
+            margin-bottom: 60px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 4px;
+            background: #f1c40f;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(241, 196, 15, 0.2);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(241, 196, 15, 0.3);
+            border-color: #fbedb7; 
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: #d35400;
+            font-size: 1.4rem;
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            color: #f1c40f;
+            margin-bottom: 20px;
+        }
+
+        .sobre {
+            padding: 100px 20px;
+            background-color: #f0f8ff; 
+            display: flex;
+            justify-content: center;
+        }
+        
+        .sobre-container {
+            max-width: 1100px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+            background: white;
+            padding: 50px;
+            border-radius: 30px; 
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+        }
+
+        .sobre-texto, .sobre-img {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .sobre-img {
+            background: linear-gradient(45deg, #f1c40f, #e67e22);
+            height: 350px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 10px 10px 30px rgba(230, 126, 34, 0.3);
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 70px 20px 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            text-align: left;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 25px;
+            color: #f1c40f; 
+            font-size: 1.2rem;
+        }
+        
+        .footer-col p, .footer-col a {
+             color: #bdc3c7;
+             margin-bottom: 10px;
+             display: block;
+        }
+        
+        .footer-col a:hover {
+            color: #f1c40f;
+        }
+
+        .copyright {
+            margin-top: 60px;
+            border-top: 1px solid #34495e;
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1.1rem; }
+            .sobre-container { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">Clínica Raio de Sol</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#servicos">Especialidades</a></li>
+                    <li><a href="#sobre">A Clínica</a></li>
+                    <li><a href="#contato" class="btn-agendar">Agendar Consulta</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Sua saúde merece brilhar.</h1>
+            <p>Na Clínica Raio de Sol, oferecemos um atendimento humanizado e acolhedor para iluminar o caminho do seu bem-estar.</p>
+            <button onclick="location.href='#contato'" class="btn-cta">Marcar Minha Consulta ☀</button>
+        </div>
+    </section>
+
+    <section id="servicos" class="servicos">
+        <h2 class="section-title">Nossas Especialidades</h2>
+        <div class="servicos-grid">
+            <div class="card">
+                <div class="card-icon">♥</div>
+                <h3>Cardiologia</h3>
+                <p>Cuidado preventivo e tratamentos avançados para manter seu coração radiante e forte.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🧸</div>
+                <h3>Pediatria</h3>
+                <p>Acompanhamento carinhoso para garantir que o desenvolvimento dos pequenos seja brilhante.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🦴</div>
+                <h3>Ortopedia</h3>
+                <p>Recupere sua mobilidade e qualidade de vida com nossos especialistas em movimento.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🩺</div>
+                <h3>Clínica Geral</h3>
+                <p>O primeiro passo para um diagnóstico preciso, com foco na sua saúde integral.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="sobre">
+        <div class="sobre-container">
+            <div class="sobre-img">
+                [Imagem da Equipe/Fachada]
+            </div>
+            <div class="sobre-texto">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 25px;">O Calor do Nosso Cuidado</h2>
+                <p>A Clínica Raio de Sol nasceu com o propósito de dissipar as nuvens da incerteza quando o assunto é saúde. Acreditamos que um ambiente acolhedor é parte fundamental do tratamento.</p>
+                <br>
+                <p>Nossa equipe multidisciplinar trabalha com a mais alta tecnologia, sem nunca esquecer do toque humano que faz toda a diferença na sua recuperação.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Contato e Localização</h4>
+                <p>📞 (11) 99888-7777</p>
+                <p>📧 atendimento@raiodesol.com.br</p>
+                <p>📍 Rua da Aurora, 500 - Jd. das Flores</p>
+            </div>
+            <div class="footer-col">
+                <h4>Horários de Atendimento</h4>
+                <p>Seg - Sex: 08:00 - 19:00</p>
+                <p>Sáb: 08:00 - 13:00</p>
+                <p>Dom: Descanso</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#servicos">Especialidades</a></li>
+                    <li><a href="#sobre">Quem Somos</a></li>
+                    <li><a href="#">Convênios Aceitos</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2024 Clínica Raio de Sol. Feito com carinho e luz.
+        </div>
+    </footer>
+
+</body>
+</html>
